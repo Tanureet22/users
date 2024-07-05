@@ -1,0 +1,34 @@
+<h1>Welcome to our family!</h1>
+
+<%= form_tag(root_path, method: "get") do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search for Users by Location..." %>
+    <%= select_tag :language_id, options_for_select(@languages.map{ |m| [m.name, m.id] }), include_blank: "Select Language" %>
+    <%= submit_tag "Search" %>
+  <% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>User Id</th>
+      <th>Location</th>
+      <th>Languages</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users_with_languages.each do |user| %>
+      <tr>
+      <td><%= link_to user.id, user_path(user) %></td>
+        <td><%= user.location %></td>
+        <td>
+          <ul>
+            <% user.languages.each do |language| %>
+              <li><%= language.name %></li>
+            <% end %>
+          </ul>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= paginate @users_with_languages %>

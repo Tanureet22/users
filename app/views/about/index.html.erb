@@ -1,0 +1,12 @@
+<h1>About Us</h1>
+
+<p>In my database, I have two tables namely Users and Languages. Users Tables has five columns namely "id", "location", "age", "created_at", "updated_at". </p>
+<p>In languages table have eight columns named "id", "name", "rating", "time_period", "country_spoken", "created_at", "updated_at", "user_id". Users and Languages table have one to many associations between them because one user can know many languages.</p>
+
+<h2>Data Sources</h2>
+
+<ul>
+  <% @data_sources.each do |source| %>
+    <li><strong><%= source[:name] %>:</strong> <%= source[:description] %></li>
+  <% end %>
+</ul>

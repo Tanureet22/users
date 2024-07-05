@@ -1,0 +1,33 @@
+<h1>All Users list</h1>
+
+<%= form_with(url: users_path, method: "get") do %>
+  <%= text_field_tag(:search, params[:search], placeholder: "Search for Users by Location") %>
+  <%= submit_tag("Search") %>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>User Id</th>
+      <th>Location</th>
+      <th>Age</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.id %></td>
+        <td><%= user.location %></td>
+        <td><%= user.age %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<% if flash[:notice] %>
+  <div class="alert alert-warning">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+
+<%= paginate @users %>

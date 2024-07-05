@@ -1,0 +1,35 @@
+<h1>Languages all over the World</h1>
+
+<%= form_with(url: languages_path, method: "get") do %>
+  <%= text_field_tag(:search, params[:search], placeholder: "Search for Languages") %>
+  <%= submit_tag("Search") %>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Rating</th>
+      <th>Time Period</th>
+      <th>Country Spoken</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @languages.each do |language| %>
+      <tr>
+        <td><%= language.name %></td>
+        <td><%= language.rating %></td>
+        <td><%= language.time_period %></td>
+        <td><%= language.country_spoken %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<% if flash[:notice] %>
+  <div class="alert alert-warning">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+
+<%= paginate @languages %>

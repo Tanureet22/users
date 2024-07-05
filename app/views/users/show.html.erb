@@ -1,0 +1,13 @@
+<h1><strong>User ID:</strong><%= @user.id %></h1>
+<p><strong>Location:</strong> <%= @user.location%></p>
+<p><strong>Age:</strong> <%= @user.age %></p>
+
+
+<h2>Languages Known</h2>
+<ul>
+  <% @user.languages.each do |language| %>
+    <li><%= link_to language.name, language_path(language) %></li>
+  <% end %>
+</ul>
+
+<%= link_to 'Back to User List', root_path %>

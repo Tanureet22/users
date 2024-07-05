@@ -1,0 +1,8 @@
+<h1><%= @language.name %></h1>
+<p><strong>Rating:</strong> <%= @language.rating %></p>
+<p><strong>Time Period:</strong> <%= @language.time_period %></p>
+<p><strong>Country Spoken:</strong> <%= @language.country_spoken %></p>
+
+<p>
+  <%= link_to 'Back to Users', user_path(@language.user) %>
+</p>
